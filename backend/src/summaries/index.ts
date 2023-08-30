@@ -1,0 +1,1 @@
+export { router as summariesRoutes } from "./summaries.router";

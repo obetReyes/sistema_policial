@@ -1,0 +1,1 @@
+export { locationGateway } from "./location.gateway";

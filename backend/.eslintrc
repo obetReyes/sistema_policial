@@ -1,0 +1,19 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "rules":{
+      "quotes": ["error", "double"], //quotes must be double
+      "semi": ["error", "always"], //always semicolons at the end of an statement
+      "@typescript-eslint/no-explicit-any": ["error", {  "fixToUnknown": true}], // no any 
+      "curly": "error", // control statements must be between curly brackets
+      "no-empty": "error" // no empty statements
+    }
+  }

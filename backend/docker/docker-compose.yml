@@ -1,0 +1,29 @@
+# Set the version of docker compose to use
+version: '3.9'
+
+# The containers that compose the project
+services:
+  
+  testsDB:
+    image: postgres:15
+    restart: always
+    container_name: tests-prisma
+    ports:
+      - '5433:5432'
+    environment:
+      POSTGRES_USER: prisma
+      POSTGRES_PASSWORD: prisma
+      POSTGRES_DB: tests
+  
+  cache:
+    image: redis:7.0
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass d22c7c930fc4667a8ccf01d55a4b412c
+    volumes: 
+      - cache:/data
+
+volumes:
+  cache:
+  minio_storage:

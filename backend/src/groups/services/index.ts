@@ -1,0 +1,1 @@
+export { getGroupsService, getGroupService } from "./groups.service";

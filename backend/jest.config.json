@@ -1,0 +1,6 @@
+{
+  "preset": "ts-jest",
+  "resetMocks": true,
+  "clearMocks": true,
+  "setupFilesAfterEnv":["./__tests__/setupTests.ts"]
+}

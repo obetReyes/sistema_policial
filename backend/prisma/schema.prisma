@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+ 
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model Location_Info{
+  id Int  @id @default(autoincrement())
+  createdAt DateTime @default(now())  
+  updatedAt DateTime @updatedAt
+  latitude Float?
+  longitude Float?
+  user   User @relation(fields: [userName], references: [name])
+  userName String @unique
+}
+
+model Group{
+   id Int  @id @default(autoincrement())
+   name String @unique
+  area String?
+  createdAt DateTime @default(now())  
+  updatedAt DateTime @updatedAt 
+  users User[]
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  socketId  String? @unique
+  createdAt DateTime @default(now())  
+  updatedAt DateTime @updatedAt
+  cuip     String   @unique
+  name      String  @unique
+  token     String[]  
+  role      Role     @default(OFFICER)
+  password  String
+  group   Group? @relation(fields: [groupName], references: [name])
+  groupName String? 
+  location Location_Info?
+  reports Report[]  
+  summaries Summary[]
+}
+
+model Report{
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())  
+  updatedAt DateTime @updatedAt
+  event String  @db.Text
+  actions String @db.Text
+  summary String @db.Text
+  user  User @relation(fields: [userName], references: [name])
+  userName String 
+}
+
+model Summary{
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())  
+  updatedAt DateTime @updatedAt
+  callTime String @db.Text
+  incident String @db.Text 
+  requestor String
+  notes String @db.Text
+  location String
+  phone String @db.Text
+  user  User @relation(fields: [userName], references: [name])
+  userName String
+}
+
+enum Role {
+  OFFICER
+  OPERATOR
+  DISPATCHER
+}
