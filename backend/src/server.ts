@@ -70,7 +70,7 @@ function main(){
   routes(app);
   locationGateway({io});
   
-    seed();
+    // seed();
    
 
 }
