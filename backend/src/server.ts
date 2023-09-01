@@ -12,7 +12,7 @@ export const server = createServer(app);
 app.set("trust proxy", 1);
 export const io = new Server(server, {
   cors:{
-    origin: "http://localhost:4173",
+    origin: process.env.HOST,
     credentials:true
   }
 });
@@ -56,7 +56,7 @@ app.disable("x-powered-by");
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:4173",
+    origin:  process.env.HOST,
   })
 );
 app.use(express.json());
@@ -69,9 +69,9 @@ function main(){
   server.listen(port);
   routes(app);
   locationGateway({io});
-  if (process.env.NODE_ENV === "development") {
-   //  seed();
-   }  
+  
+    seed();
+   
 
 }
 main();
