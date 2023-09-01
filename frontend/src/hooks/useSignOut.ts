@@ -9,7 +9,7 @@ import { axiosPrivate } from "../helpers";
 export const useSignOutMutation = () => {
     const navigate = useNavigate();
 
-    const {setUser, setRole, setToken, persist} = useContext(UserContext);
+    const {setUser, setRole, setToken} = useContext(UserContext);
     const {mutate} = useMutation<GlobalResI, AxiosError>(async():Promise<GlobalResI> => {
         const {data} = await axiosPrivate.get<GlobalResI>("/auth/signout");
         return data
@@ -20,7 +20,6 @@ export const useSignOutMutation = () => {
             setUser(false)
             setToken("")
             setRole("")
-            persist ? localStorage.removeItem("persist") : null
             navigate("/", {
                 replace:true
             });
@@ -29,7 +28,6 @@ export const useSignOutMutation = () => {
             console.log(error);
             setUser(false)
             setToken("")
-            persist ? localStorage.removeItem("persist") : null
             navigate("/", {
                 replace:true
             });
