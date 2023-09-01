@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import { User, Group, Role, Report, Summary } from "@prisma/client";
 import { prisma } from "./prisma.service.utils";
 
-export function seed() {
+export async function seed() {
   const generateCuip = async () => {
     const randomWords = faker.lorem.words(10); // Generate 10 random words
     const maxLength = 25;
@@ -70,7 +70,7 @@ export function seed() {
           actions: faker.lorem.words(20),
           summary: faker.lorem.words(25),
           user: {
-            connect: { id: users[randomIndex].id },
+            connect: { id: users[randomIndex]?.id },
           },
         },
       });
@@ -96,17 +96,21 @@ export function seed() {
           phone: faker.phone.number(),
           requestor: faker.internet.userName(),
           user: {
-            connect: { id: users[randomIndex].id },
+            connect: { id: users[randomIndex]?.id },
           },
         },
       });
     }
   };
 
-  officersSeed(); 
-  dispatchersSeed();
-  reportsSeed();
-  summariesSeed();
-
-  groupsSeed();
+ try {
+    await officersSeed()
+    await officersSeed(); 
+    await dispatchersSeed();
+    await groupsSeed();
+    await reportsSeed();
+    await summariesSeed();
+  } catch (error) {
+    console.error("Seed process encountered an error:", error);
+  }
 }
