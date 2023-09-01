@@ -11,8 +11,7 @@ it will create the schema in the db
 and also you will to run  npx prisma generate to interact with the database from express
 
 you will a env file with the next attributes,
-- MAIL="here goes an email"
-- MAIL_TO="an email to receive notifications"
+
 - DATABASE_URL="database url localhost or in the cloud"
 - ACCESS_TOKEN_SECRET="acess token secret for the jwt "
 - REFRESH_TOKEN_SECRET="refresh token secret for the refresh jwt "
