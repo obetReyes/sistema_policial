@@ -19,7 +19,7 @@ export const MapPage = () => {
 
 
   useEffect(() => {
-    const newSocket = io("http://localhost:8000", {
+    const newSocket = io(import.meta.env.VITE_BASE_URL, {
       auth: {
         token: token,
       },
