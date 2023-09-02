@@ -15,8 +15,8 @@ interface PropsI{
 export const MapView = ({markers}:PropsI) => {
  
   const styles = {
-    satellite:"mapbox://styles/mapbox/satellite-streets-v12",
-    street:"mapbox://styles/mapbox/dark-v11",
+   satellite:`mapbox://styles/mapbox/satellite-streets-v12?access_token=${import.meta.env.VITE_MAPBOX_TOKEN}`,
+    street:`mapbox://styles/mapbox/dark-v11?access_token=${import.meta.env.VITE_MAPBOX_TOKEN}`,
   }
 
 
