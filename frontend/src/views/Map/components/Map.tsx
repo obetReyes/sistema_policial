@@ -99,7 +99,7 @@ export const MapView = ({markers}:PropsI) => {
        <div className='w-full h-screen' ref={mapDiv}></div>
       {IsDistance ? 
     <div className='fixed z-50 top-2 left-4 p-4 bg-gray-800 text-white'>
-        <p>estas ubicado a {distance.kms} de tu destino</p>
+        <p>la distancia entre puntos son: {distance.kms} kilometros </p>
         <p>el tiempo estimado de llegada son {distance.minutes} minutos en auto</p>
     </div>
     

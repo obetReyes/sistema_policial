@@ -1,15 +1,21 @@
-import React from "react";
+
 import { BtnMyLocation } from "../BtnLocation";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { NavbarLayout } from "./NavbarLayout";
+import { BtnDirections } from "../../views/Map/components/DirectionsBtn";
 export const DispatcherNavbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   return (
       <NavbarLayout>
-        <div className="navbar-start gap-3">
-          
-          <a className="btn  text-warning">crear sumario</a>
-          {location.pathname === "/"  &&   <BtnMyLocation/>}
+        <div >
+        {location.pathname === "/"  &&  <div className="flex  gap-4 ">
+        <BtnDirections  />
+        <BtnMyLocation/>
+        <Link to="/sumarios" className="btn">
+              ver sumarios
+              </Link>
+        </div>  }
         </div>
         <div className="navbar-center flex">
           <ul className="menu menu-horizontal px-1">

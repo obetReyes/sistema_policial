@@ -80,17 +80,17 @@ export const UsersModal = ({param}:Props) => {
               client.refetchQueries(["records", "users"])
             }
             setIsModal(false)
-            }
+            },
         })
      }
      e?.target.reset()
-     reset()
+ 
   }
   )
   
    // common styles 
  const inputStyles = "w-full rounded-lg rounded-sm border-gray-300 p-4 pr-12 text-sm text-warning shadow-sm focus:border-zinc-800 focus:ring-transparent"
- const errorStyles = "absolute  text-sm  !mt-0 !mb-0 text-error font-semibold underline"
+ const errorStyles = "text-center 	 text-sm  !mt-0 !mb-0 text-error font-semibold underline"
 
   return (
     <>
@@ -109,7 +109,8 @@ export const UsersModal = ({param}:Props) => {
   }} >
           ✕</label>
     <h3 className="font-bold text-lg">Nuevo Agente</h3>
-    <div className="modal-action">
+    <div className="modal-action  p-4" >
+    
     <form className='flex flex-col w-full gap-10' onSubmit={onSubmit}>
   <label htmlFor="name" className="sr-only">Nombre</label>
   <div>
@@ -214,7 +215,7 @@ export const UsersModal = ({param}:Props) => {
       autoComplete="off"
       {...register("group")}
      > 
-      {recordsQuery.data?.message.map((group) => {
+      { recordsQuery.data?.message.map((group) => {
         return(
           <option key={group.id} value={group.name} >{group.name}</option>
         )
@@ -226,9 +227,9 @@ export const UsersModal = ({param}:Props) => {
     
 
     <input type='submit' className='btn float-right' value="crear agente"></input>
-    {isError ? <p className={`${errorStyles} pt-4`}>{`${(error as ErrorsI).response.data.message}`}</p> : null}
     </form>
-    </div>
+        </div>
+        {isError ? <p className={errorStyles}>{`${(error as ErrorsI).response.data.message}`}</p> : null}
   </div>
 </div>
 </>}

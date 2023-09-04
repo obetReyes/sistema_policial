@@ -10,10 +10,11 @@ export const OperatorNavbar = () => {
 
   return (
     <NavbarLayout>
-        <div className="">
+        <div >
         {location.pathname === "/"  &&  <div className="flex  gap-4 ">
         <BtnDirections  />
         <BtnMyLocation/>
+        
         </div>  }
         </div>
         <div className="navbar-center flex  ">

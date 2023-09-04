@@ -31,10 +31,10 @@ export const UserPage = () => {
             {customDate(agentQuery.data?.message?.updatedAt)}{" "}
             {customHour(agentQuery.data?.message?.updatedAt)}
           </p>
-
-          {agentQuery.data?.message.role == "OFFICER" && <p>oficial</p>}
-          {agentQuery.data?.message.role == "DISPATCHER" && <p>emisario</p>}
-          {agentQuery.data?.message.role == "OPERATOR" && <p>operador</p>}
+  
+          {agentQuery.data?.message.role == "OFFICER" && <p>     cargo: oficial</p>}
+          {agentQuery.data?.message.role == "DISPATCHER" && <p> cargo: emisario</p>}
+          {agentQuery.data?.message.role == "OPERATOR" && <p>    cargo: operador</p>}
 
           {agentQuery.data?.message.role == "OFFICER" && (
             <>

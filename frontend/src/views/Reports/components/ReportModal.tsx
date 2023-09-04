@@ -44,8 +44,7 @@ export const ReportModal = ({param}:Props) => {
   
    // common styles 
  const inputStyles = "w-full rounded-lg rounded-sm border-gray-300 p-4 pr-12 text-sm text-warning shadow-sm focus:border-zinc-800 focus:ring-transparent"
- const errorStyles = "absolute  text-sm  !mt-0 !mb-0 text-error font-semibold underline"
-
+ const errorStyles = "text-center 	 text-sm  !mt-0 !mb-0 text-error font-semibold underline"
   return (
     <>
 <label htmlFor="myModalReport" className="btn" onClick={() => setIsModal(true)}>crear reporte</label>
@@ -60,8 +59,8 @@ export const ReportModal = ({param}:Props) => {
     reset()
     }}>✕</label>
     <h3 className="font-bold text-lg">Nuevo Reporte</h3>
-    <div className="modal-action">
-    <form className="flex flex-col gap-10" onSubmit={onSubmit}>
+    <div className="modal-action p-4">
+    <form className="flex flex-col w-full gap-10" onSubmit={onSubmit}>
   <label htmlFor="eventInput" className="sr-only">Suceso</label>
   
   <div>
@@ -115,9 +114,11 @@ export const ReportModal = ({param}:Props) => {
   
       <input  className=" btn float-right" type='submit'value="crear reporte"/>
     }
-        {isError ? <p className="   text-sm  !mt-0 !mb-0    text-error font-semibold underline">{`${(error as ErrorsI).response.data.message}`}</p> : null}
+ 
     </form>
+
     </div>
+    {isError ? <p className={errorStyles}>{`${(error as ErrorsI).response.data.message}`}</p> : null}
   </div>
 </div>
 </>

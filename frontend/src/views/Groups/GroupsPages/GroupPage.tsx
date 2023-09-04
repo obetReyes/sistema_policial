@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { GroupUpdateModal } from "../components/GroupsUpdateModal";
 import { useContext } from "react";
 import { UserContext } from "../../../contexts";
+
+
 export const GroupPage = () => {
   const {role} = useContext(UserContext)
   const { grupoId } = useParams();
@@ -56,7 +58,16 @@ export const GroupPage = () => {
                     {user.reports}
                       </td>
                       <td><Link to="/"  className="btn  btn-sm">ver localizacion</Link></td>
-                      <td><Link to="/"  className="btn  btn-sm">ver reportes</Link></td>
+                      
+                       
+                      <td>
+                      <span className="btn  btn-sm" onClick={() => {
+                        navigate(`/agentes/${user.name}`)
+                      }} >
+                        ver perfil
+                        </span>
+          
+                      </td>
                     </tr>
               );
             })}
